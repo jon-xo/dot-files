@@ -1,20 +1,18 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/jonn/.oh-my-zsh"
+export ZSH="/home/jonn/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel10k"
-
-# DEFAULT_USER='whoami'
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -26,7 +24,7 @@ ZSH_THEME="powerlevel10k"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+# DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
@@ -35,7 +33,7 @@ DISABLE_AUTO_UPDATE="true"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -47,7 +45,7 @@ DISABLE_AUTO_UPDATE="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -66,58 +64,22 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git fzf)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# export PATH="/usr/local/sbin:$PATH"
-# export PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-
-
-# Export vim clipboard to macOS
-
-# yank to clipboard
-# if has ("clipboard")
-#	set clipboard=unnamed " copy to the system clipboard
-#	if has ("unnamedplus") " X11 support
-#		set clipboard+=unnamedplus
-#	endif
-# endif
-
-#
-# Load in fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Type "fd" to open a directory using fzf
-fd() {
-	local dir
-	dir=$(find ${1:-.} -path '*/\.*' -prune \
-		-o -type d -print 2> /dev/null | fzf +m) &&
-		cd "$dir"
-}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Preferred editor for local and remote sessions
-
-export EDITOR='nvim'
-
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -135,22 +97,11 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
 alias ll="ls -lah"
 alias cmu="chmod 755"
 alias cc="clear"
 alias rmx="rm -rfv"
-# Set Homebrew Python3 as default, macOS version remains @ /usr/bin/python 
-# alias python=/usr/local/bin/python3
 
-# Look for pyenv Python version
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Import Python3 venv.bash https://github.com/wuub/venv
-
-# source [ -f ~/.venv/venv.bash ] || source ~/.venv/venv.bash
+export NVM_DIR="/home/jonn/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
