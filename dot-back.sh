@@ -4,7 +4,7 @@
 cd ~
 
 # list file names and run grep search which includes "bash, fzf, zsh" and excludes filenames with "history, swp, pre". Copy grep results to working directory.
-ls -1a | grep -i 'bash\|fzf\|zsh\|vim\|tmux\|NERD' | grep -v 'history\|swp\|pre\|log' | xargs -I '{}' cp -Rf '{}' ~/bin/dot-files/
+ls -1a | grep -i 'bash\|config\|fzf\|zsh\|vim\|tmux\|NERD' | grep -v 'history\|swp\|pre\|log' | xargs -I '{}' cp -Rf '{}' ~/bin/dot-files/
 
 # Create conjob
 ## $ crontab -e
