@@ -1,7 +1,7 @@
 # Setup fzf
 # ---------
 if [[ ! "$PATH" == */Users/jonn/.fzf/bin* ]]; then
-  export PATH="$PATH:/Users/jonn/.fzf/bin"
+  export PATH="${PATH:+${PATH}:}/Users/jonn/.fzf/bin"
 fi
 
 # Auto-completion
@@ -11,4 +11,3 @@ fi
 # Key bindings
 # ------------
 source "/Users/jonn/.fzf/shell/key-bindings.zsh"
-

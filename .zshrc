@@ -8,7 +8,14 @@ export ZSH="/Users/jonn/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel10k"
+ZSH_THEME="spaceship"
+
+# Prompt Customization
+SPACESHIP_PROMPT_ADD_NEWLINE="true"
+SPACESHIP_USER_SHOW="always"
+SPACESHIP_USER_COLOR="yellow"
+
+#ZSH_THEME="powerlevel10k"
 
 # DEFAULT_USER='whoami'
 
@@ -17,6 +24,9 @@ ZSH_THEME="powerlevel10k"
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment to skip the verification of oh-my-zsh directories
+ZSH_DISABLE_COMPFIX="true"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -110,9 +120,9 @@ fd() {
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 # Preferred editor for local and remote sessions
 
@@ -132,13 +142,19 @@ export EDITOR='nvim'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# General aliases
+alias zshconf="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias ll="ls -lah"
 alias cmu="chmod 755"
 alias cc="clear"
 alias rmx="rm -rfv"
+
+# git aliases
+setopt interactive_comments
+preexec(){ _lc=$1; }
+alias gm='git commit -m "${_lc#gm }" #'
+
 # Set Homebrew Python3 as default, macOS version remains @ /usr/bin/python 
 # alias python=/usr/local/bin/python3
 
@@ -149,8 +165,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Import Python3 venv.bash https://github.com/wuub/venv
 
 # source [ -f ~/.venv/venv.bash ] || source ~/.venv/venv.bash
+
+#eval “$(starship init zsh)”
