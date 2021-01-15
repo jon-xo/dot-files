@@ -1,0 +1,44 @@
+{
+    "Console Log": {
+        "prefix": "cll",
+        "body": [
+            "console.log(${1:\"\"});",
+            "$2"
+        ],
+        "description": "Log output to console"
+    },
+    "Document Query Selector": {
+        "prefix": "dqs",
+        "body": [
+            "document.querySelector(\"$1\")"
+        ]
+    },
+    "Document Query Selector All": {
+        "prefix": "dqsa",
+        "body": [
+            "document.querySelectorAll(\"$1\")"
+        ]
+    },
+    "Add Event Listener": {
+        "prefix": "ael",
+        "body": [
+            "addEventListener(${1:\"click\"}, $2 , false);"
+        ]
+    },
+    "Add Event Listener Function": {
+        "prefix": "aelf",
+        "body": [
+            "addEventListener(${1:\"click\"}, function () {",
+            "\t$2",
+            "} , false);"
+        ]
+    },
+    "Arrow Function": {
+        "prefix": "afn",
+        "body": [
+            "export const ${1:name} = (${2:params}) => {",
+            "$2",
+            "};"
+        ]
+    }
+}
