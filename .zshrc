@@ -89,6 +89,9 @@ source $ZSH/oh-my-zsh.sh
 # export PATH="/usr/local/sbin:$PATH"
 # export PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 
 # Export vim clipboard to macOS
 
@@ -104,8 +107,8 @@ source $ZSH/oh-my-zsh.sh
 # Load in fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Type "fd" to open a directory using fzf
-fd() {
+# Type "fz" to open a directory using fzf
+fz() {
 	local dir
 	dir=$(find ${1:-.} -path '*/\.*' -prune \
 		-o -type d -print 2> /dev/null | fzf +m) &&
@@ -123,6 +126,9 @@ fd() {
 #if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
+
+# Remove duplicates from PATH
+typeset -U PATH
 
 # Preferred editor for local and remote sessions
 
@@ -146,11 +152,17 @@ export EDITOR='nvim'
 alias zshconf="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias ll="ls -lah"
-alias cmu="chmod 755"
+alias cmx="chmod 755"
 alias cc="clear"
 alias rmx="rm -rfv"
+alias pathf="echo $PATH | tr ':' '\n'"
 
 # git aliases
+alias gs="git status"
+alias gb="git branch"
+alias gba="git branch -a"
+alias gaw="git add ./*"
+alias ga="git add"
 setopt interactive_comments
 preexec(){ _lc=$1; }
 alias gm='git commit -m "${_lc#gm }" #'
@@ -163,6 +175,22 @@ alias gm='git commit -m "${_lc#gm }" #'
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+# Function includes
+
+# Create directory and change to new directory.
+mg() {
+  mkdir -p "$1" && cd -P $_
+}
+
+# cd one level
+up() {
+	for i in {1..$1};
+	do
+		cd ..
+	done
+}
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -45,7 +45,7 @@ if [ -d "$HOME/Library/Python/2.7/bin" ]; then
 fi 
 
 export LESS='-M'
-export PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+# export PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 export EDITOR='subl -w'				# default editor for commenting git commits
 
 export HISTSIZE=10000				# 500 is default
