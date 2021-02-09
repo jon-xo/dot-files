@@ -81,6 +81,8 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+plugins+=(zsh-better-npm-completion)
+plugins+=(git-open)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -150,6 +152,7 @@ export EDITOR='nvim'
 #
 # General aliases
 alias zshconf="nvim ~/.zshrc"
+alias zsrc="source /Users/jonn/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias ll="ls -lah"
 alias cmx="chmod 755"
@@ -158,14 +161,18 @@ alias rmx="rm -rfv"
 alias pathf="echo $PATH | tr ':' '\n'"
 
 # git aliases
+
+preexec(){ _lc=$1; }
+setopt interactive_comments
+alias gm="git commit -m "${_lc#gm }" #"
 alias gs="git status"
 alias gb="git branch"
-alias gba="git branch -a"
+alias gba="git branch --all"
 alias gaw="git add ./*"
 alias ga="git add"
-setopt interactive_comments
-preexec(){ _lc=$1; }
-alias gm='git commit -m "${_lc#gm }" #'
+alias gaa="git add --all"
+alias gpo="git push origin "
+alias glo="git pull origin "
 
 # Set Homebrew Python3 as default, macOS version remains @ /usr/bin/python 
 # alias python=/usr/local/bin/python3
@@ -189,6 +196,20 @@ up() {
 	do
 		cd ..
 	done
+}
+
+# Test specificed git branch
+
+ttb () {
+    git fetch --all
+    git checkout $1
+    git pull origin $1
+}
+
+# Change the remote repository URL.
+changeorigin () {
+    git remote remove origin
+    git remote add origin $1
 }
 
 

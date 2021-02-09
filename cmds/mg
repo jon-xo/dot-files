@@ -1,0 +1,9 @@
+#!/bin/sh
+
+dir="$1"
+
+mg () {
+  mkdir -p -- "$dir" && cd -P -- "$_"
+}
+
+mg $1
