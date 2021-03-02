@@ -54,5 +54,11 @@
             "\t$0",
             "};"
         ]
+    },
+    "React Import": {
+        "prefix": "imr",
+        "body": [
+            "import React${1:, { ${2:func} \\}} from \"react\"$0"
+        ]
     }
 }
