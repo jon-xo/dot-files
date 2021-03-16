@@ -83,6 +83,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 plugins+=(zsh-better-npm-completion)
 plugins+=(git-open)
+plugins+=(osx)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -159,6 +160,8 @@ alias cmx="chmod 755"
 alias cc="clear"
 alias rmx="rm -rfv"
 alias pathf="echo $PATH | tr ':' '\n'"
+alias nwin='open -a /System/Applications/Utilities/Terminal.app .'
+alias dtb="bash /Users/jonn/bin/dot-files/dot-back.sh"
 
 # git aliases
 
