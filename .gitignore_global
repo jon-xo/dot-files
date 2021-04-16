@@ -1,0 +1,5 @@
+# Update git global settings:
+# git config --global core.excludesfile ~/.gitignore_global
+
+.DS_Store
+.vscode

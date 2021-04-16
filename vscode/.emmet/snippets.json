@@ -1,0 +1,19 @@
+{
+    "html": {
+        "snippets": {
+            "ull": "ul>li[id=${1} class=${2}]*2{ Will work with html, pug, haml and slim }",
+            "oll": "<ol><li id=${1} class=${2}> Will only work in html </ol>",
+            "ran": "{ Wrap plain text in curly braces }",
+            "html:b": "html>(head>meta[charset=${charset}]+meta[name=\"viewport\" content=\"width=device-width, initial-scale=1\"]+link:css[href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1\" crossorigin=\"anonymous\"]+link:css[rel=\"stylesheet\" href=\"./styles/main.css\"]+title{${1:Document}})+body>h1{Hello, World!}+c{ Include Bootstrap Bundle }+script:src[src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW\" crossorigin=\"anonymous\"]",
+            "link:boot": "link:css[href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1\" crossorigin=\"anonymous\"]",
+            "script:boot": "script:src[src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW\" crossorigin=\"anonymous\""
+        }
+    },
+    "css": {
+        "snippets": {
+            "cb": "color: black",
+            "bsd": "border: 1px solid ${1:red}",
+            "ls": "list-style: ${1}"
+        }
+    }
+}
