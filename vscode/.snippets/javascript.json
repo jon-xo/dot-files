@@ -42,7 +42,7 @@
     "Export Arrow Function": {
         "prefix": "efn",
         "body": [
-            "export const ${2:name} = (${3:params}) => {",
+            "export const ${1:name} = (${2:params}) => {",
             "\t$0",
             "};"
         ]
@@ -50,9 +50,21 @@
     "Arrow Function": {
         "prefix": "afn",
         "body": [
-            "const ${2:name} = (${3:params}) => {",
+            "const ${1:name} = (${2:params}) => {",
             "\t$0",
             "};"
+        ]
+    },
+    "Fat Arrow": {
+        "prefix": "phat",
+        "body": [
+            "${1:(${2:param})} => ${3:{$0}}"
+        ]
+    },
+    "React Import": {
+        "prefix": "imr",
+        "body": [
+            "import React${1:, { ${2:func} \\}} from \"react\"$0"
         ]
     }
 }

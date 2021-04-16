@@ -1,0 +1,25 @@
+{
+	"MDC boilerplate": {
+		"prefix": "html:m",
+		"body": [
+			"<!doctype html>",
+			"<html lang='en'>",
+    			"\t<head>",
+                    "\t\t<meta charset='utf-8'>",
+                    "\t\t<meta name='viewport' content='width=device-width, initial-scale=1'>",
+                    "\t\t<title>$1</title>",
+                    "\t\t<meta name='viewport' content='width=device-width, initial-scale=1'>",
+                    "\t\t<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'>",
+                    "\t\t<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700'>",
+                    "\t\t<link rel='stylesheet' href='bundle-login.css'>",
+                "\t</head>",
+                "\t<body>",
+                    "\t\t<h1>$1</h1>",
+                    "\t\t<!-- Add your site or application content here -->",
+                    "\t\t  <script src='bundle-login.js' async></script>",
+                "\t</body>",
+            "</html>"
+		],
+		"description": "Creates Material Design Boilerplate"
+	}
+}
