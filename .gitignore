@@ -365,6 +365,9 @@ FodyWeavers.xsd
 ## Project Specific Files
 ## ------------------------------------------------
 
+# MacOS Caches
+.DS_Store
+
 # Node.js extensions and dependencies
 extensions/
 
@@ -373,3 +376,6 @@ extensions/
 .oh-my-zsh/
 .bash_sessions/
 .zsh_sessions/
+.vim/plugged/vim-husk/
+powerline/themes
+powerline/colorschemes
