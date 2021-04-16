@@ -379,3 +379,14 @@ macos/.zsh_sessions/
 macos/.vim/plugged/*/
 macos/powerline/themes
 macos/powerline/colorschemes
+
+linux/.fzf/
+linux/.oh-my-zsh/
+linux/.bash_sessions/
+linux/.zsh_sessions/
+linux/.vim/plugged/*/
+linux/.config/powerline/themes/
+linux/.config/powerline/colorschemes/
+linux/.config/menus/
+linux/.vim/plugged/
+linux/.oh-my-zsh

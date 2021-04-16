@@ -1,0 +1,14 @@
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[user]
+	name = jon-xo
+	email = jonn@hey.com
+[pager]
+	branch = false
+[core]
+	excludesFile = .gitignore_global
+[init]
+	defaultBranch = main

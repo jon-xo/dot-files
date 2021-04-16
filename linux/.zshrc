@@ -7,10 +7,6 @@ export ZSH="/home/jonn/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-<<<<<<< HEAD:linux/.zshrc
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
-=======
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="spaceship"
 
@@ -22,7 +18,6 @@ SPACESHIP_USER_COLOR="yellow"
 #ZSH_THEME="powerlevel10k"
 
 # DEFAULT_USER='whoami'
->>>>>>> main:macos/.zshrc
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -85,59 +80,17 @@ ZSH_DISABLE_COMPFIX="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-<<<<<<< HEAD:linux/.zshrc
 plugins=(git fzf)
-=======
-plugins=(git)
-plugins+=(zsh-better-npm-completion)
-plugins+=(git-open)
-plugins+=(osx)
->>>>>>> main:macos/.zshrc
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-<<<<<<< HEAD:linux/.zshrc
-=======
-# export PATH="/usr/local/sbin:$PATH"
-# export PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-
-# Add Visual Studio Code (code)
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-
-# Export vim clipboard to macOS
-
-# yank to clipboard
-# if has ("clipboard")
-#	set clipboard=unnamed " copy to the system clipboard
-#	if has ("unnamedplus") " X11 support
-#		set clipboard+=unnamedplus
-#	endif
-# endif
-
-#
-# Load in fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Type "fz" to open a directory using fzf
-fz() {
-	local dir
-	dir=$(find ${1:-.} -path '*/\.*' -prune \
-		-o -type d -print 2> /dev/null | fzf +m) &&
-		cd "$dir"
-}
-
->>>>>>> main:macos/.zshrc
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-<<<<<<< HEAD:linux/.zshrc
-# Preferred editor for local and remote sessions
-=======
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -156,7 +109,6 @@ export EDITOR='nvim'
 
 # export BROWSER='/Applications/Google\ Chrome\ Canary.app --args --auto-open-devtools-for-tabs'
 
->>>>>>> main:macos/.zshrc
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -171,28 +123,18 @@ export EDITOR='nvim'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-<<<<<<< HEAD:linux/.zshrc
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-=======
-# General aliases
-alias zconf="nvim ~/.zshrc"
-alias zsrc="source /Users/jonn/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
->>>>>>> main:macos/.zshrc
 alias ll="ls -lah"
 alias cmx="chmod 755"
 alias cc="clear"
 alias rmx="rm -rfv"
-<<<<<<< HEAD:linux/.zshrc
 
 export NVM_DIR="/home/jonn/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-=======
 alias pathf="echo $PATH | tr ':' '\n'"
-alias nwp='open -a /System/Applications/Utilities/Terminal.app .'
 alias dtb="bash /Users/jonn/bin/dot-files/dot-back.sh"
 
 # git aliases
@@ -261,4 +203,3 @@ changeorigin () {
 # source [ -f ~/.venv/venv.bash ] || source ~/.venv/venv.bash
 
 #eval “$(starship init zsh)”
->>>>>>> main:macos/.zshrc

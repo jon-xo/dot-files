@@ -1,0 +1,5 @@
+nvim-config ~/.config/nvim/init.vim
+tmux-config ~/.tmux.conf
+web-root /var/www/jonxo.dev
+zshrc ~/.zshrc
+
