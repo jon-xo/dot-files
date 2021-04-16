@@ -372,10 +372,10 @@ FodyWeavers.xsd
 extensions/
 
 # Orphaned directories
-.fzf/
-.oh-my-zsh/
-.bash_sessions/
-.zsh_sessions/
-.vim/plugged/vim-husk/
-powerline/themes
-powerline/colorschemes
+macos/.fzf/
+macos/.oh-my-zsh/
+macos/.bash_sessions/
+macos/.zsh_sessions/
+macos/.vim/plugged/*/
+macos/powerline/themes
+macos/powerline/colorschemes
