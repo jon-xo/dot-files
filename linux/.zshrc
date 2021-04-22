@@ -12,6 +12,7 @@ export ZSH="/home/jonn/.oh-my-zsh"
 # ZSH_THEME="spaceship"
 
 # Prompt Customization
+# Overriden by Starship prompt
 # SPACESHIP_PROMPT_ADD_NEWLINE="true"
 # SPACESHIP_USER_SHOW="always"
 # SPACESHIP_USER_COLOR="yellow"
