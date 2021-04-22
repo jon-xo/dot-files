@@ -157,7 +157,7 @@ export EDITOR='nvim'
 #
 # General aliases
 alias zconf="nvim ~/.zshrc"
-alias zsrc="source /Users/jonn/.zshrc"
+alias zsrc="source ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias ll="ls -lah"
 alias cmx="chmod 755"
@@ -165,7 +165,7 @@ alias cc="clear"
 alias rmx="rm -rfv"
 alias pathf="echo $PATH | tr ':' '\n'"
 alias nwp='open -a /System/Applications/Utilities/Terminal.app .'
-alias dtb="bash /Users/jonn/bin/dot-files/dot-back.sh"
+alias dtb="bash ~/bin/dot-files/dot-back.sh"
 
 # git aliases
 
@@ -181,10 +181,6 @@ alias gaa="git add --all"
 alias gpo="git push origin "
 alias glo="git pull origin "
 
-# Download base .gitignore
-gig() {
-   curl https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore > .gitignore
-}
 
 # Set Homebrew Python3 as default, macOS version remains @ /usr/bin/python 
 # alias python=/usr/local/bin/python3
@@ -196,6 +192,11 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # Function includes
+
+# Download base .gitignore
+gig() {
+   curl https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore > .gitignore
+}
 
 ## Create directory and change to new directory.
 mg() {
