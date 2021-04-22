@@ -124,23 +124,33 @@ typeset -U PATH
 # General aliases
 alias zconf="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias zsrc="source ~/.zshrc"
 alias ll="ls -lah"
 alias cmx="chmod 755"
 alias cc="clear"
 alias rmx="rm -rfv"
 alias pathf="echo $PATH | tr ':' '\n'"
+alias dtb="bash ~/bin/dot-files/dot-back.sh"
 
 # git aliases
+
 alias gs="git status"
 alias gb="git branch"
 alias gba="git branch -a"
 alias gaw="git add ./*"
 alias ga="git add"
+alias gpo="git push origin "
+alias glo="git pull origin "
 setopt interactive_comments
 preexec(){ _lc=$1; }
 alias gm='git commit -m "${_lc#gm }" #'
 
 # Function includes
+
+# Download base .gitignore
+gig() {
+   curl https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore > .gitignore
+}
 
 # Create directory and change to new directory.
 mg() {
@@ -154,6 +164,30 @@ up() {
 		cd ..
 	done
 }
+
+## Test specificed git branch
+
+ttb () {
+    git fetch --all
+    git checkout $1
+    git pull origin $1
+}
+
+# Change the remote repository URL.
+changeorigin () {
+    git remote remove origin
+    git remote add origin $1
+}
+
+## C# functions
+### Create a new project
+
+newt () {
+   dotnet new console -n $1 -o .
+}
+
+### Run program
+alias dtr="dotnet run"
 
 # Starship prompt
 eval "$(starship init zsh)"
