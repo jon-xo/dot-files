@@ -7,26 +7,20 @@ export ZSH="/home/jonn/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="spaceship"
 
 # Prompt Customization
-SPACESHIP_PROMPT_ADD_NEWLINE="true"
-SPACESHIP_USER_SHOW="always"
-SPACESHIP_USER_COLOR="yellow"
-
-#ZSH_THEME="powerlevel10k"
-
-# DEFAULT_USER='whoami'
+# SPACESHIP_PROMPT_ADD_NEWLINE="true"
+# SPACESHIP_USER_SHOW="always"
+# SPACESHIP_USER_COLOR="yellow"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment to skip the verification of oh-my-zsh directories
-ZSH_DISABLE_COMPFIX="true"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -57,7 +51,9 @@ ZSH_DISABLE_COMPFIX="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
+# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -80,7 +76,7 @@ ZSH_DISABLE_COMPFIX="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,27 +84,24 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# Load in fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
+# Type "fz" to open a directory using fzf
+fz() {
+	local dir
+	dir=$(find ${1:-.} -path '*/\.*' -prune \
+		-o -type d -print 2> /dev/null | fzf +m) &&
+		cd "$dir"
+}
 
 # Remove duplicates from PATH
 typeset -U PATH
 
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
 # Preferred editor for local and remote sessions
-
-export EDITOR='nvim'
-
-# Set default browser
-
-# export BROWSER='/Applications/Google\ Chrome\ Canary.app --args --auto-open-devtools-for-tabs'
-
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -126,44 +119,25 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+
+# General aliases
+alias zconf="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias ll="ls -lah"
 alias cmx="chmod 755"
 alias cc="clear"
 alias rmx="rm -rfv"
-
-export NVM_DIR="/home/jonn/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 alias pathf="echo $PATH | tr ':' '\n'"
-alias dtb="bash /Users/jonn/bin/dot-files/dot-back.sh"
 
 # git aliases
-
-preexec(){ _lc=$1; }
-setopt interactive_comments
-alias gm="git commit -m "${_lc#gm }" #"
 alias gs="git status"
 alias gb="git branch"
-alias gba="git branch --all"
+alias gba="git branch -a"
 alias gaw="git add ./*"
 alias ga="git add"
-alias gaa="git add --all"
-alias gpo="git push origin "
-alias glo="git pull origin "
-
-# Download base .gitignore
-gig() {
-   curl https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore > .gitignore
-}
-
-# Set Homebrew Python3 as default, macOS version remains @ /usr/bin/python 
-# alias python=/usr/local/bin/python3
-
-# Look for pyenv Python version
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+setopt interactive_comments
+preexec(){ _lc=$1; }
+alias gm='git commit -m "${_lc#gm }" #'
 
 # Function includes
 
@@ -180,26 +154,5 @@ up() {
 	done
 }
 
-# Test specificed git branch
-
-ttb () {
-    git fetch --all
-    git checkout $1
-    git pull origin $1
-}
-
-# Change the remote repository URL.
-changeorigin () {
-    git remote remove origin
-    git remote add origin $1
-}
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Import Python3 venv.bash https://github.com/wuub/venv
-
-# source [ -f ~/.venv/venv.bash ] || source ~/.venv/venv.bash
-
-#eval “$(starship init zsh)”
+# Starship prompt
+eval "$(starship init zsh)"
