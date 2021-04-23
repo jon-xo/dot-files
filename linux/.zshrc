@@ -189,5 +189,8 @@ newt () {
 ### Run program
 alias dtr="dotnet run"
 
+# SSH Passphrase fix for WSL2
+eval `keychain --quiet --eval --agents ssh id_rsa`
+
 # Starship prompt
 eval "$(starship init zsh)"
