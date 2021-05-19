@@ -371,7 +371,7 @@ FodyWeavers.xsd
 # Node.js extensions and dependencies
 extensions/
 
-# Orphaned directories
+# Local mac directories
 macos/.fzf/
 macos/.oh-my-zsh/
 macos/.bash_sessions/
@@ -380,6 +380,7 @@ macos/.vim/plugged/*/
 macos/powerline/themes
 macos/powerline/colorschemes
 
+# Local linux directories
 linux/.fzf/
 linux/.oh-my-zsh/
 linux/.bash_sessions/
@@ -390,3 +391,6 @@ linux/.config/powerline/colorschemes/
 linux/.config/menus/
 linux/.vim/plugged/
 linux/.oh-my-zsh
+
+# Local misc.
+cron/.CronSetupDone

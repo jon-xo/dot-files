@@ -2,8 +2,10 @@
 
 # Update variables to match local user paths per operating system
 
-linuxPath="~/bin/dot-files/linux"
-macPath="~/bin/dot-files/macos"
+UXH=$HOME
+PROJROOT=$(find $HOME -maxdepth 3 -type d -name "dot-files")
+linuxPath="$PROJROOT/linux"
+macPath="$PROJROOT/macos"
 
 # declare detectOS function
 function detectOS() {
@@ -19,17 +21,20 @@ function detectOS() {
 
     # Use regex to check if platform contains "Darwin" to detect macos kernel
     # *then* store mac string in foundos variable.
-    if [[ "$platform" =~ .*"$mx".* ]]; then
+    if [[ "$platform" =~ .*"$mx".* ]]; 
+    then
         local foundos="mac"
     # Use regex to check if platform varoable contains "Linux" to confirm OS
     # *then* store linux string in foundos variable.
-    elif [[ "$platform" =~ .*"$lx"*. ]] || [[ "$platform" =~ .*"WSL"*. ]]; then
+    elif [[ "$platform" =~ .*"$lx"*. ]] || [[ "$platform" =~ .*"WSL"*. ]]; 
+    then
         local foundos="linux"
     fi
 
     # *if* argument was passed to function, set foundos variable equal to argument
     # *else* return 44
-    if [[ "$__resultvar" ]]; then
+    if [[ "$__resultvar" ]]; 
+    then
         eval $__resultvar="'$foundos'"
     else
         return 44
@@ -38,37 +43,47 @@ function detectOS() {
 
 detectOS ostype
 
-if [[ "$ostype" == "mac" ]]; then
+if [[ "$ostype" == "mac" ]]; 
+then
 
     # change directory to home folder
-    cd ~
+    cd $UXH
 
     # list file names and run grep search which includes "bash, fzf, zsh" and excludes filenames with "history, swp, pre". Copy grep results to working directory.
     ls -1a | grep -i 'bash\|fzf\|zsh\|vim\|tmux\|NERD' | grep -v 'history\|swp\|pre\|log' | xargs -I '{}' cp -Rf '{}' $macPath
 
     # change directory to ~/.config folder
-    cd ~/.config
+    cd $UXH/.config
 
     # list file names and run grep search which includes "nvim, powerline, coc, starship" and excludes filenames with "Microsoft, citra, torr, xbuild, config, karabiner, menus, yarn". Copy grep results to working directory.
     ls -1a | grep -i 'nvim\|powerline\|coc\|starship' | grep -v 'Microsoft\|citra\|torr\|xbuild\|config\|karabiner\|menus\|yarn' | xargs -I '{}' cp -Rf '{}' $macPath
 
-elif [[$ostype == "linux" ]]; then
+elif [[ $ostype == "linux" ]];
+then
 
     # change directory to home folder
-    cd ~
+    cd $UXH
 
-    # list file names and run grep search which includes "bash, fzf, zsh" and excludes filenames with "history, swp, pre". Copy grep results to working directory.
-    ls -1a | grep -i 'bash\|fzf\|zsh\|vim\|tmux\|NERD' | grep -v 'history\|swp\|pre\|log' | xargs -I '{}' cp -Rf '{}' $linuxPath
+    # find hidden files with "." symbol, excluding multiple files from result, copy find results to repo directory.
+    find . -maxdepth 1 -type f -name ".*" ! -name "*history" ! -name ".*dump*" ! -name ".*logout" ! -name ".sudo*" ! -name ".gitconfig" ! -name ".motd*" ! -name ".shell.pre*" ! -name ".netrc" | xargs -I '{}' cp -Rf '{}' $linuxPath
 
     # change directory to ~/.config folder
-    cd ~/.config
+    cd $UXH/.config
+
+    # Create .config path using -p option to create all necessary directories.
+    mkdir -p $linuxPath/.config
+
 
     # list file names and run grep search which includes "nvim, powerline, coc, starship" and excludes filenames with "Microsoft, citra, torr, xbuild, config, karabiner, menus, yarn". Copy grep results to working directory.
-    ls -1a | grep -i 'nvim\|powerline\|coc\|starship' | grep -v 'Microsoft\|citra\|torr\|xbuild\|config\|karabiner\|menus\|yarn' | xargs -I '{}' cp -Rf '{}' $linuxPath
+    ls -1a | grep -i 'nvim\|coc\|starship' | grep -v 'Microsoft\|citra\|torr\|xbuild\|config\|karabiner\|menus\|yarn' | xargs -I '{}' cp -Rf '{}' $linuxPath/.config
 
 fi
 
-# Create conjob
-## $ crontab -e
+# Dynamically create crontab and local file to verify cron-setup has run,
+# and to prevent additional execution.
+source $PROJROOT/cron/cron-setup.sh
+
+# ---- crontab notes ----
+## $ crontab -e ...
 # Execute cron job every 15 minutes
-## */15 * * * * ~/bin/dot-files/dot-back.sh > /tmp/stdout.log 2>/tmp/stderr.log
+## ... */15 * * * * ~/bin/dot-files/dot-back.sh > /tmp/stdout.log 2>/tmp/stderr.log
