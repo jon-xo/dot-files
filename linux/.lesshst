@@ -1,0 +1,12 @@
+.less-history-file:
+.search
+"-H
+"-E
+"-o
+"-c
+"i
+"-i
+"-L
+"-v
+.search
+"-type
