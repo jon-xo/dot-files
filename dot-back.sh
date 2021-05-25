@@ -3,9 +3,6 @@
 # Update variables to match local user paths per operating system
 
 UXH=$HOME
-PROJROOT=$(find $HOME -maxdepth 3 -type d -name "dot-files")
-linuxPath="$PROJROOT/linux"
-macPath="$PROJROOT/macos"
 
 # declare detectOS function
 function detectOS() {
@@ -20,7 +17,7 @@ function detectOS() {
     mx="Darwin"
 
     # Use regex to check if platform contains "Darwin" to detect macos kernel
-    # *then* store mac string in foundos variable.
+    # *then* store ma c string in foundos variable.
     if [[ "$platform" =~ .*"$mx".* ]]; 
     then
         local foundos="mac"
@@ -46,6 +43,10 @@ detectOS ostype
 if [[ "$ostype" == "mac" ]]; 
 then
 
+    PROJROOT=$(find $HOME -path "$HOME/Library" -prune -o  -path "$HOME/.Trash" -prune -o -type d -maxdepth 3  -name "dot-files" -print)
+    macPath="$PROJROOT/macos"
+
+
     # change directory to home folder
     cd $UXH
 
@@ -60,6 +61,9 @@ then
 
 elif [[ $ostype == "linux" ]];
 then
+
+    PROJROOT=$(find $UXH -maxdepth 3 -type d -name "dot-files")
+    linuxPath="$PROJROOT/linux"
 
     # change directory to home folder
     cd $UXH
