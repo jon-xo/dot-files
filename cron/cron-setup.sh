@@ -7,8 +7,8 @@ PROJROOT=$(find $HOME -maxdepth 3 -path "$HOME/Library" -prune -o  -path "$HOME/
 USR=$USER
 _dir="${1:-${PWD}}"
 
-# Envoke detectOS script to identify current OS
-# and store result in ostype
+# Invoke detectOS script to identify current OS
+# and store result [ ubuntu || mac ] in ostype variable
 source $PROJROOT/cmds/detectOS.sh ostype
 
 # Check for cron-setup first run file, 

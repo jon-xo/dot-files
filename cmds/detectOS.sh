@@ -13,7 +13,7 @@ function detectOS() {
     mx="Darwin"
 
     # Use regex to check if platform contains "Darwin" to detect macos kernel
-    # *then* store ma c string in foundos variable.
+    # *then* store mac string in foundos variable.
     if [[ "$platform" =~ .*"$mx".* ]]; 
     then
         local foundos="mac"

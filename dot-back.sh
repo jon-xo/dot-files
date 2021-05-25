@@ -1,13 +1,11 @@
 #!/bin/sh
 
-# Update variables to match local user paths per operating system
-
+# Path variables
 UXH=$HOME
 PROJROOT=$(find $HOME -maxdepth 3 -path "$HOME/Library" -prune -o  -path "$HOME/.Trash" -prune -o -type d -name "dot-files" -print)
 
-
-# Envoke detectOS script to identify current OS
-# and store result in ostype
+# Invoke detectOS script to identify current OS
+# and store result [ ubuntu || mac ] in ostype variable
 source $PROJROOT/cmds/detectOS.sh ostype
 
 if [[ "$ostype" == "mac" ]]; 
@@ -44,14 +42,14 @@ then
     # Create .config path using -p option to create all necessary directories.
     mkdir -p $linuxPath/.config
 
-
     # list file names and run grep search which includes "nvim, powerline, coc, starship" and excludes filenames with "Microsoft, citra, torr, xbuild, config, karabiner, menus, yarn". Copy grep results to working directory.
     ls -1a | grep -i 'nvim\|coc\|starship' | grep -v 'Microsoft\|citra\|torr\|xbuild\|config\|karabiner\|menus\|yarn' | xargs -I '{}' cp -Rf '{}' $linuxPath/.config
 
 fi
 
-# Dynamically create crontab and local file to verify cron-setup has run,
-# and to prevent additional execution.
+# Dynamically create crontab job and .CronSetupDone file,
+# which prevents the cron-setup action to re-execute
+# after successful completion.
 source $PROJROOT/cron/cron-setup.sh
 
 # ---- crontab notes ----
