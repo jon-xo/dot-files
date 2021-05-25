@@ -1,41 +1,22 @@
-add_newline = true
+format = """\
+  $username\
+  $hostname\
+  $directory\
+  $git_branch\
+  $git_commit\
+  $git_state\
+  $git_status\
+  $cmd_duration\
+  $custom\
+  $jobs\
+  $battery\
+  $time\
+  $line_break\
+  $character\
+  """
 
-prompt_order = [
-    "username",
-    "memory_usage",
-    "hostname",
-    "kubernetes",
-    "directory",
-    "git_branch",
-    "git_commit",
-    "git_state",
-    "git_status",
-    "hg_branch",
-    "package",
-    "dotnet",
-    "elixir",
-    "elm",
-    "golang",
-    "haskell",
-    "java",
-    "nodejs",
-    "php",
-    "python",
-    "ruby",
-    "rust",
-    "terraform",
-    "nix_shell",
-    "conda",
-    "aws",
-    "env_var",
-    "crystal",
-    "line_break",
-    "battery",
-    "cmd_duration",
-    "jobs",
-    "time",
-    "character",
-]
+# Inserts a blank line between shell prompts
+add_newline = true
 
 [battery]
 full_symbol = "🔋"
@@ -55,20 +36,23 @@ threshold = 100
 style = "bold green"
 
 [character]
-# symbol = "➜"
-error_symbol = "✗"
-use_symbol_for_status = true
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
+vicmd_symbol = "[V](bold green) "
+# use_symbol_for_status = true
 
 [cmd_duration]
-min_time = 500
-prefix = "tooks "
+# $duration – The command duration (e.g. "15s")
+# $style    – The default style of the module (e.g. "bold yellow")
+format = "took [$duration]($style) "
 
 [directory]
 truncation_length = 6
 truncate_to_repo = true
-prefix = "in "
-style  "bold cyan"
+truncation_symbol = "…/"
+style = "bold cyan dimmed"
 disabled = false
+format = "in [$path]($style) "
 
 # [env_var]
 # variable = "SHELL"
@@ -95,29 +79,27 @@ progress_divider = " of "
 style = "bold yellow"
 disabled = false
 
-# [git_status]
-# conflicted = "🏳"
-# ahead = "🏎💨"
-# behind = "😰"
-# diverged = "😵"
-# untracked = "🤷‍"
-# stashed = "📦"
-# modified = "📝"
-# staged.value = "++"
-# staged.style = "green"
-# staged_count.enabled = true
-# staged_count.style = "green"
-# renamed = "👅"
-# deleted = "🗑"
-
-# [[git_status.count]]
-# enabled = true
+[git_status]
+conflicted = "⚔️ "
+ahead = "🏎️ × ${count}"
+behind = "🐢 × ${count}"
+diverged = "🔱 🏎️ × ${ahead_count} 🐢 × ${behind_count}"
+untracked = "🛤️ × ${count}‍"
+stashed = "📦 "
+modified = "📝"
+staged = "++"
+renamed = "👅"
+deleted = "🗑"
+style = "bold fg:27"
+format = "$all_status$ahead_behind"
 
 [hostname]
 ssh_only = false
-prefix = "🤖"
-# suffix = "⟫"
 trim_at = "."
+style = "bold fg:117"
+format = "@ [$hostname]($style) "
+# prefix = "🤖"
+# suffix = "⟫"
 disabled = false
 
 # [jobs]
@@ -160,8 +142,16 @@ disabled = false
 # show_always = true
 # disabled = false
 
+[time]
+time_format = "%R"
+format = "at [$time]($style) "
+style = "bold white"
+time_range = "17:00:00-03:00:00"
+disabled = false
+
 [username]
 style_root = "bold red"
 style_user = "bold yellow"
-show_always = false
-disabled = false=
+format = "[$user]($style) "
+show_always = true
+disabled = false

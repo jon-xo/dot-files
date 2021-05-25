@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:"/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jonn/.oh-my-zsh"
@@ -156,11 +156,11 @@ gig() {
 mg() {
   mkdir -p "$1" && cd -P $_
 }
-
 # cd one level
 up() {
 	for i in {1..$1};
 	do
+
 		cd ..
 	done
 }
@@ -186,11 +186,21 @@ newt () {
    dotnet new console -n $1 -o .
 }
 
-### Run program
+## Windows 
+### Open file in VisualStudio
+vse () {	
+   echo "Launching Visual Studio..."
+   timeout --preserve-status 3 /mnt/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2019/Community/Common7/IDE/devenv.exe $1
+   return 0
+}
+
+### Run C# program
 alias dtr="dotnet run"
 
 # SSH Passphrase fix for WSL2
-eval `keychain --quiet --eval --agents ssh id_rsa`
+
+
+alias keyz='eval `keychain --quiet --eval --agents ssh id_rsa`'
 
 # Starship prompt
 eval "$(starship init zsh)"

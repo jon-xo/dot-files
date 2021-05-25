@@ -1,22 +1,22 @@
 call plug#begin("~/.vim/plugged")
-	" Plugin Section
-	Plug 'arcticicestudio/nord-vim'
-	Plug 'scrooloose/nerdtree'
-	Plug 'ryanoasis/vim-devicons'
-	Plug 'vim-airline/vim-airline'
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'junegunn/fzf.vim'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Plugin Section
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'scrooloose/nerdtree'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'vim-airline/vim-airline'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
-	Plug 'leafgarland/typescript-vim'
-	Plug 'peitalin/vim-jsx-typescript'
-	Plug 'tpope/vim-surround'
-	Plug 'townk/vim-autoclose'
-	Plug 'tmux-plugins/vim-tmux-focus-events'
-	Plug 'roxma/vim-tmux-clipboard'
-	Plug 'tmux-plugins/vim-tmux'
-	Plug 'vim-utils/vim-husk'
-	" Plug 'dracula/vim'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'peitalin/vim-jsx-typescript'
+    Plug 'tpope/vim-surround'
+    Plug 'townk/vim-autoclose'
+    Plug 'tmux-plugins/vim-tmux-focus-events'
+    Plug 'roxma/vim-tmux-clipboard'
+    Plug 'tmux-plugins/vim-tmux'
+    Plug 'vim-utils/vim-husk'
+    " Plug 'dracula/vim'
 call plug#end()
 
 " Config Section
