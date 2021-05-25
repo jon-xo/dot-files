@@ -22,7 +22,7 @@ else
     # If setup file is not present, create temporary file with crontab syntax in /tmp directory
     $(touch /tmp/tempJob && chmod 600 /tmp/tempJob) && echo "*/20 * * * * $PROJROOT/dot-back.sh > /tmp/stdout.log 2>/tmp/stderr.log" >> /tmp/tempJob
     # Add new job to cron tab using temp file 
-    if [[ "$ostype" == "linux"]];
+    if [[ "$ostype" == "linux" ]];
     then
       crontab -u $USR /tmp/tempJob
     else
