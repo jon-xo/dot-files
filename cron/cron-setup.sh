@@ -3,13 +3,18 @@
 ## v1.0 -- Tested as working in Ubuntu 20.04, ...macOS test pending...
 
 # Path variables
-PROJROOT=$(find $HOME -maxdepth 3 -type d -name "dot-files")
+PROJROOT=$(find $HOME -maxdepth 3 -path "$HOME/Library" -prune -o  -path "$HOME/.Trash" -prune -o -type d -name "dot-files" -print)
 USR=$USER
 _dir="${1:-${PWD}}"
+
+# Envoke detectOS script to identify current OS
+# and store result in ostype
+source $PROJROOT/cmds/detectOS.sh ostype
 
 # Check for cron-setup first run file, 
 # if file is present, checck for setup string
 # and exit
+
 if  [ -f "$PROJROOT/cron/.CronSetupDone" ] && grep -q "$USR-cron-setup" "$PROJROOT/cron/.CronSetupDone";
 then
   return 0
