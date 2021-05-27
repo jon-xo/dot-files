@@ -30,6 +30,7 @@ Dot-back has been tested with macOS (`11.0.x`) and Ubuntu (`20.04.x LTS`). The s
 | 📄 `~/.zshrc`      |         ✔️         |        ✔️        |
 📄 `~/.zcompdump*`            |         ❌         |        ❌        |
 📄 `~/.zsh_history`            |         ❌         |        ❌        |
+
 ⁜ _Additional files and directories are excluded in the project's `.gitignore`_
 ⁜⁜ _Symlinks with matching filenames are ignored_ `Ubuntu` only
 
@@ -37,7 +38,7 @@ Dot-back has been tested with macOS (`11.0.x`) and Ubuntu (`20.04.x LTS`). The s
 ## Installation
 1. [Fork](https://docs.github.com/en/github/collaborating-with-pull-requests/working-with-forks) this project
 2. In the command line, `cd` to the project folder
-3. Run the script:
+3. Execute the script:
 ```bash
 $SHELL ./dot-back.sh
 ```
