@@ -38,9 +38,9 @@ Dot-back has been tested with macOS (`11.0.x`) and Ubuntu (`20.04.x LTS`). The s
 📄 `~/.zcompdump*`            |         ❌         |        ❌        |
 📄 `~/.zsh_history`            |         ❌         |        ❌        |
 
-⁜ _Additional files and directories are excluded in the project's `.gitignore`_
+⁜   _Additional files and directories are excluded in the project's `.gitignore`_
 
-⁜⁜ _Symlinks with matching filenames are ignored_ `Ubuntu` only
+⁜⁜  _Symlinks with matching filenames are ignored_ `Ubuntu` only
 
 
 ## Installation
@@ -67,4 +67,5 @@ Dot-back has been tested with macOS (`11.0.x`) and Ubuntu (`20.04.x LTS`). The s
 Use `crontab -r` to delete all user created `crontab`s, `man crontab` for more information.
 
 ### How do I edit the frequency of dot-back
-Edit `L23` in `./cron/cron-setup.sh` with your [preferred frequency](https://crontab.guru/). Once edited, delete `./cron/.CronSetupDone` and run `./dot-back.sh`.
+Edit `L23` in `./cron/cron-setup.sh` with your [preferred frequency](https://crontab.guru/). 
+Once updated, delete `./cron/.CronSetupDone` and run `./dot-back.sh`.
