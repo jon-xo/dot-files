@@ -22,8 +22,11 @@ then
     # change directory to ~/.config folder
     cd $UXH/.config
 
+    # Create .config path using -p option to create all necessary directories.
+    mkdir -p $macPath/.config
+
     # list file names and run grep search which includes "nvim, powerline, coc, starship" and excludes filenames with "Microsoft, citra, torr, xbuild, config, karabiner, menus, yarn". Copy grep results to working directory.
-    ls -1a | grep -i 'nvim\|powerline\|coc\|starship' | grep -v 'Microsoft\|citra\|torr\|xbuild\|config\|karabiner\|menus\|yarn' | xargs -I '{}' cp -Rf '{}' $macPath
+    ls -1a | grep -i 'nvim\|powerline\|coc\|starship'  grep -v 'Microsoft\|citra\|torr\|xbuild\|config\|karabiner\|menus\|yarn' | xargs -I '{}' cp -Rf '{}' $macPath/.config
 
 elif [[ $ostype == "linux" ]];
 then
@@ -34,7 +37,7 @@ then
     cd $UXH
 
     # find hidden files with "." symbol, excluding multiple files from result, copy find results to repo directory.
-    find . -maxdepth 1 -type f -name ".*" ! -name "*history" ! -name ".*dump*" ! -name ".*logout" ! -name ".sudo*" ! -name ".gitconfig" ! -name ".motd*" ! -name ".shell.pre*" ! -name ".netrc" | xargs -I '{}' cp -Rf '{}' $linuxPath
+    find . -maxdepth 1 -type f -name ".*" ! -name "*history" ! -name ".*dump*" ! -name ".*logout" ! -name ".sudo*" ! -name ".gitconfig" ! -name ".motd*" ! -name ".shell.pre*" ! -name ".netrc" ! -name ".ssh" | xargs -I '{}' cp -Rf '{}' $linuxPath
 
     # change directory to ~/.config folder
     cd $UXH/.config
@@ -43,7 +46,7 @@ then
     mkdir -p $linuxPath/.config
 
     # list file names and run grep search which includes "nvim, powerline, coc, starship" and excludes filenames with "Microsoft, citra, torr, xbuild, config, karabiner, menus, yarn". Copy grep results to working directory.
-    ls -1a | grep -i 'nvim\|coc\|starship' | grep -v 'Microsoft\|citra\|torr\|xbuild\|config\|karabiner\|menus\|yarn' | xargs -I '{}' cp -Rf '{}' $linuxPath/.config
+    ls -1a | grep -i 'nvim\|coc\|starship' | grep -v 'Microsoft\|citra\|torr\|xbuild\|config\|karabiner\|mono\|menus\|yarn\|xbuild' | xargs -I '{}' cp -Rf '{}' $linuxPath/.config
 
 fi
 
