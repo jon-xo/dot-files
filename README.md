@@ -42,7 +42,7 @@ The script locates and copies the following directories and files:
 
 ⁜   _Additional files and directories are excluded in the project's `.gitignore`_
 
-⁜⁜  _Symlinks with matching filenames are ignored_ `Ubuntu` only
+⁜⁜  _Symlinks with matching filenames are ignored_ [_**Ubuntu** only_]
 
 
 ## Installation
