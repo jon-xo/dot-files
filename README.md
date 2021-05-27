@@ -9,13 +9,15 @@
 
 ## About
 
-Dot-back is a shell script which copies a user's dot-files to a local, version controlled directory. This project helps ensures known working backup copy of a preconfigured list of dot files can always be kept. 
+Dot-back is a shell script that copies a user's dot-files to a local, version-controlled directory. This project ensures a known working copy of a dot file matched from a preconfigured list can be kept safe. 
 
-Simply put I created this project to ensure if I sullied a file, I could always roll back to known-good version. Once a User's home directory `~` has dot `.` files present, `dot-back.sh` dynamically copies files after detecting the Operating System type and creates a cron job to repeat the function at a preconfigured frequency.
+I created this project to ensure that I could always roll back to the known-good version whenever I sullied a file. Once a User's home directory `~` has dot `.` files present, `dot-back.sh` dynamically copies files after detecting the current Operating System type and creates a `cron` job to repeat the function at a set frequency.
 
 ## Requirements
 
-Dot-back has been tested with macOS (`11.0.x`) and Ubuntu (`20.04.x LTS`). The script will search for and copy the following directories and files:
+Dot-back has been tested with macOS (`11.0.x`) and Ubuntu (`20.04.x LTS`). 
+
+The script locates and copies the following directories and files:
 
 |                                 | Ubuntu              |  MacOS          |
 | --------------------------      | :----------------:  | :-------------: |
@@ -67,5 +69,6 @@ Dot-back has been tested with macOS (`11.0.x`) and Ubuntu (`20.04.x LTS`). The s
 Use `crontab -r` to delete all user created `crontab`s, `man crontab` for more information.
 
 ### How do I edit the frequency of dot-back
-Edit `L23` in `./cron/cron-setup.sh` with your [preferred frequency](https://crontab.guru/). 
+Edit `L23` in `./cron/cron-setup.sh` with your [preferred frequency](https://crontab.guru/).
+
 Once updated, delete `./cron/.CronSetupDone` and run `./dot-back.sh`.
