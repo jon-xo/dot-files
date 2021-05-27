@@ -1,5 +1,12 @@
 # dot-back
 
+## Table of Contents
+
+  - [About](#about)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [FAQ](#faq)
+
 ## About
 
 Dot-back is a shell script which copies a user's dot-files to a local, version controlled directory. This project helps ensures known working backup copy of a preconfigured list of dot files can always be kept. 
@@ -32,6 +39,7 @@ Dot-back has been tested with macOS (`11.0.x`) and Ubuntu (`20.04.x LTS`). The s
 📄 `~/.zsh_history`            |         ❌         |        ❌        |
 
 ⁜ _Additional files and directories are excluded in the project's `.gitignore`_
+
 ⁜⁜ _Symlinks with matching filenames are ignored_ `Ubuntu` only
 
 
@@ -39,9 +47,10 @@ Dot-back has been tested with macOS (`11.0.x`) and Ubuntu (`20.04.x LTS`). The s
 1. [Fork](https://docs.github.com/en/github/collaborating-with-pull-requests/working-with-forks) this project
 2. In the command line, `cd` to the project folder
 3. Execute the script:
-```bash
-$SHELL ./dot-back.sh
-```
+    ```bash
+    $SHELL ./dot-back.sh
+    ```
+    - **MacOS**: If prompted in Terminal, click [ **OK** ] to allow access.
 4. Confirm the following:
     - The cron job was added:
         ```bash
@@ -52,3 +61,10 @@ $SHELL ./dot-back.sh
         ls ./cron
         ```
 
+## FAQ
+
+### How can I remove the cron job
+Use `crontab -r` to delete all user created `crontab`s, `man crontab` for more information.
+
+### How do I edit the frequency of dot-back
+Edit `L23` in `./cron/cron-setup.sh` with your [preferred frequency](https://crontab.guru/). Once edited, delete `./cron/.CronSetupDone` and run `./dot-back.sh`.
