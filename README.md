@@ -19,7 +19,7 @@ Dot-back has been tested with macOS (`11.0.x`) and Ubuntu (`20.04.x LTS`).
 
 The script locates and copies the following directories and files:
 
-|                                 | Ubuntu              |  MacOS          |
+|         File/Directory                        | Ubuntu              |  MacOS          |
 | --------------------------      | :----------------:  | :-------------: |
 | 📄 `~/.bashrc`           |         ✔️         |        ✔️        |
 | 📄 `~/.bash_history`            |         ❌         |        ❌        |
