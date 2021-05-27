@@ -11,13 +11,13 @@
 
 Dot-back is a shell script that copies a user's dot-files to a local, version-controlled directory. This project ensures a known working copy of a dot file matched from a preconfigured list can be kept safe. 
 
-I created this project to ensure that I could always roll back to the known-good version whenever I sullied a file. Once a User's home directory `~` has dot `.` files present, `dot-back.sh` dynamically copies files after detecting the current Operating System type and creates a `cron` job to repeat the function at a set frequency.
+I created this project to ensure that I could always roll back to the known-good version whenever I sullied a file. Once a User's home directory `~` has dot `.` files present, `dot-back.sh` dynamically copies files after detecting the current Operating System type and creates a `cron` job to execute the script at a set frequency.
 
 ## Requirements
 
 Dot-back has been tested with macOS (`11.0.x`) and Ubuntu (`20.04.x LTS`). 
 
-The script locates and copies the following directories and files:
+The script will copy **[**✔️**]** and omit **[**❌**]** the following directories and files:
 
 |         File/Directory                        | Ubuntu              |  MacOS          |
 | --------------------------      | :----------------:  | :-------------: |
@@ -42,7 +42,7 @@ The script locates and copies the following directories and files:
 
 ⁜   _Additional files and directories are excluded in the project's `.gitignore`_
 
-⁜⁜  _Symlinks with matching filenames are ignored_ [_**Ubuntu** only_]
+⁜⁜   _Symlinks with matching filenames are ignored_ **[**_**Ubuntu** only_**]**
 
 
 ## Installation
@@ -54,7 +54,7 @@ The script locates and copies the following directories and files:
     ```
     - **MacOS**: If prompted in Terminal, click [ **OK** ] to allow access.
 4. Confirm the following:
-    - The cron job was added:
+    - The `cron` job was added:
         ```bash
         crontab -l
         ```
