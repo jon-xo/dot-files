@@ -1,12 +1,32 @@
 #!/bin/sh
+source $PROJROOT/cmds/detectOS.sh
 
 # Path variables
 UXH=$HOME
 PROJROOT=$(find $HOME -maxdepth 3 -path "$HOME/Library" -prune -o  -path "$HOME/.Trash" -prune -o -type d -name "dot-files" -print)
 
-# Invoke detectOS script to identify current OS
-# and store result [ ubuntu || mac ] in ostype variable
-source $PROJROOT/cmds/detectOS.sh ostype
+# Call returnOS function found in detectOS script, 
+# find the current OS, and store result in ostype argument
+returnOS ostype
+
+# Use getopts to allow '-v' option to echo current OS string
+while getopts ":v" opt; do
+    case ${opt} in
+    v ) 
+        if [[ -z $ostype ]];
+        then
+            echo "Current OS: undefined"
+            break
+        else    
+            echo "Current OS: $ostype"
+            break
+        fi
+        ;;
+    \? ) 
+        echo "Usage: dotback [-v]"
+        ;;
+    esac
+done
 
 if [[ "$ostype" == "mac" ]]; 
 then
@@ -29,8 +49,7 @@ then
     ls -1a | grep -i 'nvim\|powerline\|coc\|starship'  grep -v 'Microsoft\|citra\|torr\|xbuild\|config\|karabiner\|menus\|yarn' | xargs -I '{}' cp -Rf '{}' $macPath/.config
 
 elif [[ $ostype == "linux" ]];
-then
-    
+then    
     linuxPath="$PROJROOT/linux"
 
     # change directory to home folder
