@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:"/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE"
+export PATH=$PATH:"/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE:/home/jonn/.local/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jonn/.oh-my-zsh"
@@ -82,6 +82,13 @@ plugins=(git git-open)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+## WSL2 config
+## Correct default windows startup path
+
+if [[ $(pwd) == /mnt/c/Windows/System32 ]]
+then
+    cd ~
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -149,7 +156,12 @@ alias gm='git commit -m "${_lc#gm }" #'
 
 # Download base .gitignore
 gig() {
-   curl https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore > .gitignore
+   curl https://build.jonxo.dev/env/git/gitignore > .gitignore
+}
+
+# Download base PR Template
+gprt() {
+   curl https://build.jonxo.dev/env/git/pr_template > PULL_REQUEST_TEMPLATE
 }
 
 # Create directory and change to new directory.
@@ -198,7 +210,6 @@ vse () {
 alias dtr="dotnet run"
 
 # SSH Passphrase fix for WSL2
-
 
 alias keyz='eval `keychain --quiet --eval --agents ssh id_rsa`'
 
