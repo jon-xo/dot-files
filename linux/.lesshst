@@ -8,5 +8,12 @@
 "-i
 "-L
 "-v
-.search
 "-type
+"-i
+"-log
+"-all
+"verbose
+"-log
+"--soft
+.search
+"-i
