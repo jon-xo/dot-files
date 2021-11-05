@@ -18,17 +18,19 @@ format = """\
 # Inserts a blank line between shell prompts
 add_newline = true
 
+command_timeout = 750
+
 [battery]
-full_symbol = "🔋"
-charging_symbol = "⚡️"
-discharging_symbol = "💀"
+full_symbol = "🔋 "
+charging_symbol = "🔌 "
+discharging_symbol = "⚡ "
 
 [[battery.display]]
 threshold = 10
 style = "bold red"
 
 [[battery.display]]
-threshold = 60
+threshold = 65
 style = "bold yellow"
 
 [[battery.display]]
@@ -68,14 +70,15 @@ style = "bold purple"
 disabled = false
 
 [git_state]
-cherry_pick = "CHERRY PICKING"
-rebase = "REBASING"
-merge = "MERGING"
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "🍒 CHERRY PICKING"
+rebase = "🌊 REBASING"
+merge = "📏 MERGING"
 revert = "REVERTING"
 bisect = "BISECTING"
 am = "AM"
 am_or_rebase = "AM/REBASE"
-progress_divider = " of "
+# progress_divider = " of "
 style = "bold yellow"
 disabled = false
 
@@ -86,10 +89,10 @@ behind = "🐢 × ${count}"
 diverged = "🔱 🏎️ × ${ahead_count} 🐢 × ${behind_count}"
 untracked = "🛤️ × ${count}‍"
 stashed = "📦 "
-modified = "📝"
-staged = "++"
-renamed = "👅"
-deleted = "🗑"
+modified = "📝 "
+staged = "➕ "
+renamed = "👅 "
+deleted = "💣 "
 style = "bold fg:27"
 format = "$all_status$ahead_behind"
 

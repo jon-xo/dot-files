@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:"/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE:/home/jonn/.local/bin"
+export PATH=$PATH:"/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE:/home/jonn/.local/bin":$GRADLE_HOME/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jonn/.oh-my-zsh"
@@ -85,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 ## WSL2 config
 ## Correct default windows startup path
 
-if [[ $(pwd) == /mnt/c/Windows/System32 ]]
+if [[ $(pwd) == /mnt/c/Windows/System32 ]] || [[ $(pwd) == / ]]
 then
     cd ~
 fi
@@ -179,7 +179,7 @@ up() {
 
 ## Test specificed git branch
 
-ttb () {
+ttb() {
     git fetch --all
     git checkout $1
     git pull origin $1
@@ -194,17 +194,44 @@ changeorigin () {
 ## C# functions
 ### Create a new project
 
-newt () {
+newt() {
    dotnet new console -n $1 -o .
+}
+
+hh() {
+   history | grep $1 | sort -r | less
 }
 
 ## Windows 
 ### Open file in VisualStudio
-vse () {	
-   echo "Launching Visual Studio..."
+
+### Open directory/file in IntelliJ IDEA
+### *Open Files from the Command Line - https://www.jetbrains.com/help/idea/opening-files-from-command-line.html
+
+idea() {
+   echo "Launching IntelliJ IDEA..."
+   timeout --preserve-status 3 /mnt/c/Program\ Files/JetBrains/IntelliJ\ IDEA\ Community\ Edition\ 2021.2.2/bin/idea64.exe $1
+   return 0
+}
+
+### Visual Studio 2019
+vse() {	
+   echo "Launching Visual Studio 2019..."
    timeout --preserve-status 3 /mnt/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2019/Community/Common7/IDE/devenv.exe $1
    return 0
 }
+
+### Visual Studio 2022 Preview
+vss() {	
+   echo "Launching Visual Studio 2022..."
+   timeout --preserve-status 3 /mnt/c/Program\ Files/Microsoft\ Visual\ Studio/2022/Preview/Common7/IDE/devenv.exe $1
+   return 0   
+}
+
+### Set explicit browser alias for Chrome for Windows
+BROWSER='/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe'
+
+alias open="explorer.exe"
 
 ### Run C# program
 alias dtr="dotnet run"
@@ -215,3 +242,14 @@ alias keyz='eval `keychain --quiet --eval --agents ssh id_rsa`'
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+export ANDROID_HOME=~/Android
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export GRADLE_HOME=/opt/gradle/gradle-6.9.1
