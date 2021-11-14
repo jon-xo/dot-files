@@ -85,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 ## WSL2 config
 ## Correct default windows startup path
 
-if [[ $(pwd) == /mnt/c/Windows/System32 ]] || [[ $(pwd) == / ]]
+if [[ $(pwd) == *"/mnt/c"* ]] || [[ $(pwd) == / ]]
 then
     cd ~
 fi

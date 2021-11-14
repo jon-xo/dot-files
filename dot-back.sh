@@ -1,9 +1,10 @@
 #!/bin/sh
-source $PROJROOT/cmds/detectOS.sh
 
 # Path variables
 UXH=$HOME
 PROJROOT=$(find $HOME -maxdepth 3 -path "$HOME/Library" -prune -o  -path "$HOME/.Trash" -prune -o -type d -name "dot-files" -print)
+
+source $PROJROOT/cmds/detectOS.sh
 
 # Call returnOS function found in detectOS script, 
 # find the current OS, and store result in ostype argument
